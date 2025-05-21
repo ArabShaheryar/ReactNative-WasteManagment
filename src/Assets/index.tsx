@@ -1,2 +1,10 @@
 export { default as AppLogo } from './svgs/AppLogo.svg';
 export { default as OBLogo } from './svgs/OnBoardingLogo.svg';
+export { default as AppLogoWithColor } from './svgs/AppLogoWithColor.svg';
+export { default as Email } from './svgs/emailIcon.svg';
+export { default as Lock } from './svgs/LockIcon.svg';
+export { default as EyeHide } from './svgs/EyeHide.svg';
+export { default as AccessCode } from './svgs/accesCodeIcon.svg';
+export { default as UserIcon } from './svgs/UserIcon.svg';
+export { default as SignupLogo } from './svgs/SignupLogo.svg';
+export { default as InfoCircle } from './svgs/InfoCircle.svg';

@@ -19,7 +19,9 @@ const OnBoarding = () => {
                 <Text style={styles.obTextContent}>
                     Request trash pickups, get reminders, and track services — all in one app.
                 </Text>
-                <CustomButton text='Get Started' onPress={() => { }} extraStyle={{marginTop:hp(6)}} />
+                <CustomButton text='Get Started' onPress={() => { 
+                    navigation.navigate('Signin')
+                }} extraStyle={{marginTop:hp(6)}} />
                 <TouchableOpacity><Text style={styles.newUser}>New User? <Text style={styles.newUserSpan}> Create Account</Text></Text></TouchableOpacity>
             </View>
         </ImageBackground>
