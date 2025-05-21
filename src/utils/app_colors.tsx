@@ -1,6 +1,10 @@
 export const Colors = {
-    PrimaryColor: 'rgba(2, 112, 197, 1)',
-    BlackColor35:'rgba(35, 35, 35, 1)',
+    PrimaryColor: 'rgba(76, 175, 80, 1)',
+    blackColorNetural:'rgba(51, 51, 51, 1)',
+      DarkGrey:'rgba(102, 102, 102, 1)',
+
+
+
     BlackColor:'rgba(0, 0, 0, 0)',
     PrimaryColorI: 'rgba(147, 200, 58, 0.1)',
     Whitecolor:'rgba(255, 255, 255, 1)',
@@ -10,7 +14,7 @@ export const Colors = {
     lightGrey:'rgba(208, 208, 208, 1)',
     lightGreyI:'rgba(125, 125, 125, 1)',
     lightGreyII:'rgba(189, 189, 189, 1)',
-    DarkGrey:'rgba(117, 117, 117, 1)',
+  
     backgroundColor:'rgba(245, 245, 245, 1)',
     InputField:'rgba(234, 234, 234, 1)',
     logoutButton:'rgba(175, 0, 0, 0.2)',

@@ -5,7 +5,7 @@ declare module "*.svg" {
     export default content;
 }
 
-declare module 'react-native-slider' {
-    const Slider: any;
-    export default Slider;
-}
+// declare module 'react-native-slider' {
+//     const Slider: any;
+//     export default Slider;
+// }
