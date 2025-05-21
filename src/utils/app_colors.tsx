@@ -4,13 +4,14 @@ export const Colors = {
       DarkGrey:'rgba(102, 102, 102, 1)',
     Whitecolor:'rgba(255, 255, 255, 1)',
     lightGrey:'rgba(245, 245, 245, 1)',
+    TextColor:'rgba(33, 33, 33, 1)',
 
     BlackColor:'rgba(0, 0, 0, 0)',
     PrimaryColorI: 'rgba(147, 200, 58, 0.1)',
 
     WhiteColorI:'rgba(237, 245, 251, 1)',
     WhiteLight:'rgba(221, 218, 218, 1)',
-    TextColor:'rgba(33, 33, 33, 1)',
+
 
     lightGreyI:'rgba(125, 125, 125, 1)',
     lightGreyII:'rgba(189, 189, 189, 1)',

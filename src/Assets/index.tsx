@@ -8,3 +8,4 @@ export { default as AccessCode } from './svgs/accesCodeIcon.svg';
 export { default as UserIcon } from './svgs/UserIcon.svg';
 export { default as SignupLogo } from './svgs/SignupLogo.svg';
 export { default as InfoCircle } from './svgs/InfoCircle.svg';
+export { default as ArrowBack } from './svgs/ArrowBack.svg';

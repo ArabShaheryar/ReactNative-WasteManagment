@@ -20,9 +20,9 @@ const SignUp = () => {
                     <View style={{ paddingHorizontal: wp(4), }}>
                         <Text style={styles.SignInText}>Create Account</Text>
                         <TouchableOpacity onPress={() => navigation.navigate('Signin')}><Text style={styles.dontHaveAccountText}>Already have an account?<Text style={styles.dontHaveAccountTextSpan}>Sign In</Text></Text></TouchableOpacity>
-                        
+
                         <InputText placeholder='Access Code' addLeft={<AccessCode />} />
-                        <View style={{flexDirection:'row', alignItems:'center', marginTop:hp(1)}}>
+                        <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: hp(1) }}>
                             <InfoCircle /><Text style={styles.accessCodeText}>Access code provided by your<Text style={styles.accessCodeTextSpan}> Property Manager</Text></Text>
                         </View>
                         <InputText placeholder='User Name' addLeft={<UserIcon />} />
@@ -31,8 +31,8 @@ const SignUp = () => {
                         <InputText placeholder='Confirm Password' addLeft={<Lock />} addRight={<EyeHide />} />
 
                         <CustomButton text='Sign Up' onPress={() => {
-                            navigation.navigate('Signin')
-                        }} extraStyle={{ marginTop: hp(8), marginBottom:hp(5) }} />
+                            navigation.navigate('ProfileSetup')
+                        }} extraStyle={{ marginTop: hp(8), marginBottom: hp(5) }} />
                     </View>
                 </View>
             </View>

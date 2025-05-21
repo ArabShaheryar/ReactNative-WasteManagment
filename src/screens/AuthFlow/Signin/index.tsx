@@ -24,7 +24,9 @@ const Signin = () => {
                     <TouchableOpacity onPress={()=> navigation.navigate('SignUp')}><Text style={styles.dontHaveAccountText}>Don’t have an account? <Text style={styles.dontHaveAccountTextSpan}>Sign Up</Text></Text></TouchableOpacity>
                     <InputText placeholder='Email' addLeft={<Email />} />
                     <InputText placeholder='Password' addLeft={<Lock />} addRight={<EyeHide />} />
-                    <Text style={styles.forgetText}>Forgot Password?</Text>
+                    <TouchableOpacity onPress={()=>{
+                        navigation.navigate('ForgetPassword')
+                    }}><Text style={styles.forgetText}>Forgot Password?</Text></TouchableOpacity>
                     <CustomButton text='Sign In' onPress={() => {
                         navigation.navigate('Signin')
                     }} extraStyle={{ marginTop: hp(20) }} />
