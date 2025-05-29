@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.lightGrey,
     marginTop: hp(2),
     // marginTop: '2%',
-    height: hp(8),
+    height: hp(6),
     // justifyContent: 'space-between',
     paddingHorizontal: 10,
     borderColor: Colors.lightGrey,

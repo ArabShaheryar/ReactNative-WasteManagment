@@ -25,7 +25,7 @@ const ProfileSetup = () => {
                 <InputText placeholder='Unit Number' />
 
                 <CustomButton text='Finish' onPress={() => {
-                    navigation.navigate('ProfileSetup')
+                    navigation.navigate('Signin')
                 }} extraStyle={{ marginTop: hp(16), marginBottom: hp(5) }} />
             </View>
         </KeyboardAwareScrollView>

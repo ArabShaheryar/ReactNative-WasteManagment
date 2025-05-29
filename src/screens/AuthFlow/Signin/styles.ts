@@ -48,6 +48,6 @@ const styles = StyleSheet.create({
         fontWeight: '400',
         marginTop: hp(2),
         alignSelf: 'flex-end'
-    }
+    },
 })
 export default styles;

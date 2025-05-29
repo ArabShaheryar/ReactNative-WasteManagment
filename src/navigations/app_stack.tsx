@@ -1,14 +1,14 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 import AuthStack from './auth_stack';
+import UserStack from './user_stack';
+import EmployeeStack from './employee_stack';
 
 const AppStack = () => {
     const stack = createNativeStackNavigator();
     return (
-        <SafeAreaProvider style={{ flex: 1 }}>
-            <NavigationContainer>
+<NavigationContainer>
                 <stack.Navigator
                     initialRouteName={'AuthStack'}
                     screenOptions={{
@@ -16,8 +16,10 @@ const AppStack = () => {
                         headerShown: false,
                     }}>
                     <stack.Screen name="AuthStack" component={AuthStack} />
-                    {/* <stack.Screen name="HomeStack" component={HomeStack} />
-                    <stack.Screen name="DrawerNavigator" component={DrawerNavigator} />
+                    <stack.Screen name="UserStack" component={UserStack} />
+                    <stack.Screen name="EmployeeStack" component={EmployeeStack} />
+                    {/* 
+                    
                     <stack.Screen name="ProfileStack" component={ProfileStack} />
                     <stack.Screen name="PaymentScreen" component={PaymentScreen} />
                     <stack.Screen name="SearchScreen" component={SearchScreen} />
@@ -27,7 +29,6 @@ const AppStack = () => {
                     /> */}
                 </stack.Navigator>
             </NavigationContainer>
-        </SafeAreaProvider>
     );
 };
 
