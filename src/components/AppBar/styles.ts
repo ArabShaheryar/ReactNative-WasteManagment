@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     // height: 20,
   },
   rightIconStyle: {
-    marginRight: 20,
+    // marginRight: 20,
   },
   textStyle: {
     fontSize: FontSize(20),

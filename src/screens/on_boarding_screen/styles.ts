@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.Satoshi.Bold,
     color: Colors.blackColorNetural,
     fontWeight: '700',
-    marginTop: hp(1),
+    marginTop: hp(2),
   },
   obTextContent: {
     fontSize: FontSize(16),
@@ -40,25 +40,24 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     flex: 1,
-
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     paddingHorizontal: wp(4),
     alignItems: 'center',
     justifyContent: 'center',
   },
   modalContent: {
-    height: '29%',
+    // height: '29%',
     width: '100%',
     backgroundColor: Colors.Whitecolor,
     borderRadius: 8,
-    //   paddingVertical: hp(20),
-      paddingHorizontal: wp(4),
+    paddingVertical: hp(2),
+    paddingHorizontal: wp(4),
   },
   logInAs: {
     fontSize: FontSize(18),
     fontFamily: fonts.Satoshi.Bold,
     color: Colors.blackColorNetural,
-    marginVertical:hp(2)
+    marginVertical: hp(1),
   },
   roleBox: {
     backgroundColor: Colors.lightGrey,
@@ -69,15 +68,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: hp(2),
-    borderWidth:1,
+    borderWidth: 1,
   },
-  roleText:{
-    fontSize:FontSize(15),
+  roleText: {
+    fontSize: FontSize(15),
     fontFamily: fonts.Satoshi.Medium,
-    fontWeight:'500',
-    color:Colors.DarkGrey,
-    marginLeft:wp(2)
-  }
+    fontWeight: '500',
+    color: Colors.DarkGrey,
+    marginLeft: wp(1),
+  },
 });
 
 export default styles;

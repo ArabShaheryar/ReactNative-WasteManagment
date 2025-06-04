@@ -5,8 +5,11 @@ import AppBar from '../../../components/AppBar';
 import {ArrowBack} from '../../../Assets';
 import CustomButton from '../../../components/CustomButton';
 import {Colors} from '../../../utils/app_colors';
+import {hp} from '../../../utils/responsive';
+import { useNavigation } from '@react-navigation/native';
 
 const TodayTask = () => {
+    const navigation = useNavigation<any>();
   const [selectedTab, setSelectedTab] = useState(0);
   const tabs = [
     {
@@ -169,7 +172,7 @@ const TodayTask = () => {
   };
 
   const renderItem = ({item}) => (
-    <View style={styles.card}>
+    <TouchableOpacity onPress={()=> navigation.navigate('EmployeeTaskDetail',{screenName: 'today'})} style={styles.card}>
       <Text style={styles.title}>{item.title}</Text>
       <Text style={[styles.detail, {color: Colors.DarkGrey}]}>
         Pickup Point: <Text style={styles.detail}>{item.pickupPoint}</Text>
@@ -184,15 +187,59 @@ const TodayTask = () => {
           alignItems: 'center',
         }}>
         <Text>Report Issue</Text>
-        <CustomButton
+       {
+        item.status === 'pending' ?  <CustomButton
           text="Start Task"
           onPress={() => {
             // navigation.navigate('Signin')
           }}
-          extraStyle={{width: '50%', alignSelf: 'flex-end'}}
-        />
+          TextStyle={{
+            color: Colors.PrimaryColor,
+          }}
+          extraStyle={{
+            width: '40%',
+            height: hp(4),
+            alignSelf: 'flex-end',
+            backgroundColor: Colors.lightGrey,
+            borderColor: Colors.PrimaryColor,
+            borderWidth: 1,
+          }}
+        /> : item.status === 'completed' ?  <CustomButton
+          text="Completed"
+          onPress={() => {
+            // navigation.navigate('Signin')
+          }}
+          TextStyle={{
+            color: Colors.PrimaryColor,
+          }}
+          extraStyle={{
+            width: '40%',
+            height: hp(4),
+            alignSelf: 'flex-end',
+            backgroundColor: Colors.lightGrey,
+            borderColor: Colors.PrimaryColor,
+            borderWidth: 1,
+          }}
+        /> : item.status === 'on-demand' ?  <CustomButton
+          text="Start Task"
+          onPress={() => {
+            // navigation.navigate('Signin')
+          }}
+          TextStyle={{
+            color: Colors.PrimaryColor,
+          }}
+          extraStyle={{
+            width: '40%',
+            height: hp(4),
+            alignSelf: 'flex-end',
+            backgroundColor: Colors.lightGrey,
+            borderColor: Colors.PrimaryColor,
+            borderWidth: 1,
+          }}
+        /> : <View></View>
+       }
       </View>
-    </View>
+    </TouchableOpacity>
   );
 
   return (

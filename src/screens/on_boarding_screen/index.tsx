@@ -34,7 +34,7 @@ const OnBoarding = () => {
     <ImageBackground source={Images.OB} style={{flex: 1}}>
       <View style={styles.bottomContent}>
         <OBLogo />
-        <Text style={styles.obText}>Hassle-Free Waste Management!</Text>
+        <Text style={styles.obText}>{'Hassle-Free Waste \nManagement!'}</Text>
         <Text style={styles.obTextContent}>
           Request trash pickups, get reminders, and track services — all in one
           app.
@@ -53,7 +53,7 @@ const OnBoarding = () => {
             </Text>
           </TouchableOpacity>
         ) : (
-          <View></View>
+          <View style={{ paddingBottom: hp(5),}}></View>
         )}
       </View>
       <Modal
@@ -123,7 +123,7 @@ const OnBoarding = () => {
               onPress={() => {
                 handleContinueButton();
               }}
-              extraStyle={{marginTop: hp(5)}}
+              extraStyle={{marginTop: hp(2.5)}}
             />
           </View>
         </View>

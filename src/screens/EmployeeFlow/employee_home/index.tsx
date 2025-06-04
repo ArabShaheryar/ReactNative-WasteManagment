@@ -55,7 +55,7 @@ const EmployeeHome = () => {
   ];
 
   const renderItem = ({item}) => (
-    <View style={styles.card}>
+    <TouchableOpacity  onPress={()=> navigation.navigate('EmployeeTaskDetail')} style={styles.card}>
       <Text style={styles.title}>{item.title}</Text>
       <Text style={[styles.detail, {color: Colors.DarkGrey}]}>
         Pickup Point: <Text style={styles.detail}>{item.pickupPoint}</Text>
@@ -88,13 +88,13 @@ const EmployeeHome = () => {
           }}
         />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 
   return (
     <View style={styles.body}>
       <View style={styles.appBarRow}>
-       <TouchableOpacity onPress={()=> navigation.navigate('EmployeeProfile')}>
+       <TouchableOpacity onPress={()=> navigation.navigate('EmployeeTaskDetail',{screenName: 'today'})}>
          <Image source={Images.DummyUserImage} style={styles.userImage} />
        </TouchableOpacity>
         <TouchableOpacity

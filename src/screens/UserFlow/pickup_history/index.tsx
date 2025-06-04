@@ -3,11 +3,14 @@ import {View, Text, TouchableOpacity, FlatList} from 'react-native';
 import styles from './styles';
 import InputText from '../../../components/InputText';
 import {ArrowBack, CalendarIcon, SearchIcon} from '../../../Assets';
-import { Colors } from '../../../utils/app_colors';
+import {Colors} from '../../../utils/app_colors';
 import AppBar from '../../../components/AppBar';
+import CalendarModal from '../../../components/CustomCalendar';
 
 const UserPickUpHistory = () => {
   const [selectedTab, setSelectedTab] = useState(0);
+
+  const [CalendarModel, setCalendarModel] = useState(false);
   const tabs = [
     {
       key: 0,
@@ -169,54 +172,64 @@ const UserPickUpHistory = () => {
 
   const renderItem = ({item}) => (
     <View style={styles.card}>
-     <View style={styles.rowContainer}>
-         <Text style={styles.title}>{item.title}</Text>
-      <View
-        style={[
-          styles.statusBadge,
-          item.status === 'completed' && {backgroundColor: 'green'},
-          item.status === 'missed' && {backgroundColor: 'red'},
-          item.status === 'scheduled' && {backgroundColor: 'orange'},
-        ]}>
-        <Text style={styles.statusText}>{item.status.toUpperCase()}</Text>
+      <View style={styles.rowContainer}>
+        <Text style={styles.title}>{item.title}</Text>
+        <View
+          style={[
+            styles.statusBadge,
+            item.status === 'completed' && {backgroundColor: 'green'},
+            item.status === 'missed' && {backgroundColor: 'red'},
+            item.status === 'scheduled' && {backgroundColor: 'orange'},
+          ]}>
+          <Text style={styles.statusText}>{item.status.toUpperCase()}</Text>
+        </View>
       </View>
-     </View>
-      <Text style={[styles.detail,{color:Colors.DarkGrey}]}>Date: <Text style={styles.detail}>{item.date}</Text></Text>
-      <Text style={[styles.detail,{color:Colors.DarkGrey}]}>Time Slot: <Text style={styles.detail}>{item.timeSlot}</Text></Text>
-      <Text style={[styles.detail,{color:Colors.DarkGrey}]}>Pickup Point: <Text style={styles.detail}>{item.pickupPoint}</Text></Text>
-      
+      <Text style={[styles.detail, {color: Colors.DarkGrey}]}>
+        Date: <Text style={styles.detail}>{item.date}</Text>
+      </Text>
+      <Text style={[styles.detail, {color: Colors.DarkGrey}]}>
+        Time Slot: <Text style={styles.detail}>{item.timeSlot}</Text>
+      </Text>
+      <Text style={[styles.detail, {color: Colors.DarkGrey}]}>
+        Pickup Point: <Text style={styles.detail}>{item.pickupPoint}</Text>
+      </Text>
     </View>
   );
 
   return (
     <View style={styles.body}>
-         <AppBar text="History" leftIcon={<ArrowBack />} />
+      <AppBar text="History" leftIcon={<ArrowBack />} />
       <InputText
         placeholder="Search by date"
         addLeft={<SearchIcon />}
         addRight={<CalendarIcon />}
+        onRightPress={() => setCalendarModel(true)}
       />
 
-       <View style={styles.tabContainer}>
-        {tabs.map((tab) => (
+      <View style={styles.tabContainer}>
+        {tabs.map(tab => (
           <TouchableOpacity
             key={tab.key}
-            style={[
-              styles.tab,
-              selectedTab === tab.key && styles.selectedTab
-            ]}
-            onPress={() => setSelectedTab(tab.key)}
-          >
-            <Text style={[
-              styles.tabText,
-              selectedTab === tab.key && styles.selectedTabText
-            ]}>
+            style={[styles.tab, selectedTab === tab.key && styles.selectedTab]}
+            onPress={() => setSelectedTab(tab.key)}>
+            <Text
+              style={[
+                styles.tabText,
+                selectedTab === tab.key && styles.selectedTabText,
+              ]}>
               {tab.title}
             </Text>
           </TouchableOpacity>
         ))}
+
+        <CalendarModal
+          visible={CalendarModel}
+          onClose={() => setCalendarModel(false)}
+          onDateSelect={() => {}}
+          
+        />
       </View>
-        <FlatList
+      <FlatList
         data={filteredData()}
         renderItem={renderItem}
         keyExtractor={item => item.id}

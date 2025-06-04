@@ -12,6 +12,8 @@ import {Colors} from '../../../utils/app_colors';
 const Signin = (props: any) => {
   const {userType} = props?.route?.params;
   const navigation = useNavigation<any>();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   return (
     <KeyboardAwareScrollView
@@ -38,9 +40,16 @@ const Signin = (props: any) => {
                 </Text>
               </View>
             )}
-            <InputText placeholder="Email" addLeft={<Email />} />
+            <InputText
+              placeholder="Email"
+              addLeft={<Email />}
+              value={email}
+              onChangeText={(text: any) => setEmail(text)}
+            />
             <InputText
               placeholder="Password"
+              value={password}
+              onChangeText={(text: any) => setPassword(text)}
               addLeft={<Lock />}
               addRight={<EyeHide />}
             />
@@ -69,7 +78,11 @@ const Signin = (props: any) => {
                 if (userType === 'User') {
                   navigation.replace('UserStack');
                 } else {
-                  navigation.replace('EmployeeStack');
+                  if (email.trim() === 'Admin@gmail.com') {
+                    navigation.replace('AdminStack');
+                  } else {
+                    navigation.replace('EmployeeStack');
+                  }
                 }
               }}
               extraStyle={{marginTop: hp(20)}}

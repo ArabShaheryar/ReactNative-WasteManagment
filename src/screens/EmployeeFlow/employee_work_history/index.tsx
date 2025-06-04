@@ -1,15 +1,18 @@
-
-import React, { useState } from 'react'
-import { FlatList, Text, TouchableOpacity, View } from 'react-native'
-import styles from './styles'
-import AppBar from '../../../components/AppBar'
-import { ArrowBack, CalendarIcon, SearchIcon } from '../../../Assets'
-import InputText from '../../../components/InputText'
-import { Colors } from '../../../utils/app_colors'
+import React, {useState} from 'react';
+import {FlatList, Text, TouchableOpacity, View} from 'react-native';
+import styles from './styles';
+import AppBar from '../../../components/AppBar';
+import {ArrowBack, CalendarIcon, SearchIcon} from '../../../Assets';
+import InputText from '../../../components/InputText';
+import {Colors} from '../../../utils/app_colors';
+import {useNavigation} from '@react-navigation/native';
+import CalendarModal from '../../../components/CustomCalendar';
 
 const EmployeeWorkHistory = () => {
-   const [selectedTab, setSelectedTab] = useState(0);
-    const tabs = [
+  const navigation = useNavigation<any>();
+  const [selectedTab, setSelectedTab] = useState(0);
+  const [CalendarModel, setCalendarModel] = useState(false);
+  const tabs = [
     {
       key: 0,
       title: 'All (98)',
@@ -28,7 +31,7 @@ const EmployeeWorkHistory = () => {
     },
   ];
 
-    const allData = [
+  const allData = [
     // Completed (5 entries)
     {
       id: '1',
@@ -156,7 +159,7 @@ const EmployeeWorkHistory = () => {
     },
   ];
 
- const filteredData = () => {
+  const filteredData = () => {
     switch (selectedTab) {
       case 1:
         return allData.filter(item => item.status === 'pending');
@@ -170,62 +173,67 @@ const EmployeeWorkHistory = () => {
     }
   };
 
-
-    const renderItem = ({item}) => (
+  const renderItem = ({item}) => (
     <View style={styles.card}>
       <Text style={styles.title}>{item.title}</Text>
       <Text style={[styles.detail, {color: Colors.DarkGrey}]}>
         Shift: <Text style={styles.detail}>{item.pickupPoint}</Text>
       </Text>
       <Text style={[styles.detail, {color: Colors.DarkGrey}]}>
-       Tasks Completed: <Text style={styles.detail}>{item.timeSlot}</Text>
+        Tasks Completed: <Text style={styles.detail}>{item.timeSlot}</Text>
       </Text>
       <Text style={[styles.detail, {color: Colors.DarkGrey}]}>
-      Issues Reported: <Text style={styles.detail}>{item.timeSlot}</Text>
+        Issues Reported: <Text style={styles.detail}>{item.timeSlot}</Text>
       </Text>
-      <Text style={{alignSelf:'flex-end'}}>View Details</Text>
-      
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate('EmployeeTaskDetail', {screenName: 'history'})
+        }>
+        <Text style={{alignSelf: 'flex-end'}}>View Details</Text>
+      </TouchableOpacity>
     </View>
   );
 
-  
   return (
     <View style={styles.body}>
-     <AppBar text="Work History" leftIcon={<ArrowBack />} />
+      <AppBar text="Work History" leftIcon={<ArrowBack />} />
       <InputText
         placeholder="Custom Date Range"
         addLeft={<SearchIcon />}
         addRight={<CalendarIcon />}
+        onRightPress={() => setCalendarModel(true)}
       />
 
-        <View style={styles.tabContainer}>
-        {tabs.map((tab) => (
+      <View style={styles.tabContainer}>
+        {tabs.map(tab => (
           <TouchableOpacity
             key={tab.key}
-            style={[
-              styles.tab,
-              selectedTab === tab.key && styles.selectedTab
-            ]}
-            onPress={() => setSelectedTab(tab.key)}
-          >
-            <Text style={[
-              styles.tabText,
-              selectedTab === tab.key && styles.selectedTabText
-            ]}>
+            style={[styles.tab, selectedTab === tab.key && styles.selectedTab]}
+            onPress={() => setSelectedTab(tab.key)}>
+            <Text
+              style={[
+                styles.tabText,
+                selectedTab === tab.key && styles.selectedTabText,
+              ]}>
               {tab.title}
             </Text>
           </TouchableOpacity>
         ))}
       </View>
 
-       <FlatList
+      <FlatList
         data={filteredData()}
         renderItem={renderItem}
         keyExtractor={item => item.id}
         contentContainerStyle={styles.listContent}
       />
+      <CalendarModal
+        visible={CalendarModel}
+        onClose={() => setCalendarModel(false)}
+        onDateSelect={() => {}}
+      />
     </View>
-  )
-}
+  );
+};
 
-export default EmployeeWorkHistory
+export default EmployeeWorkHistory;

@@ -12,10 +12,9 @@ export const Colors = {
   lightGreyII: 'rgba(189, 189, 189, 1)',
   WhiteColorI: 'rgba(232, 232, 232, 1)',
   grayDarkerColor: 'rgba(74, 72, 99, 1)',
-
+  bottomBorder: 'rgba(222, 226, 230, 1)',
   
 
-  backgroundColor: 'rgba(245, 245, 245, 1)',
   InputField: 'rgba(234, 234, 234, 1)',
   logoutButton: 'rgba(175, 0, 0, 0.2)',
   redColorI: 'rgba(175, 0, 0, 1)',

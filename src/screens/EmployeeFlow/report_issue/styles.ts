@@ -33,6 +33,12 @@ const styles = StyleSheet.create({
     fontSize: FontSize(12),
     color: Colors.blackColorNetural,
     fontFamily: fonts.Satoshi.Medium
-  }
+  },
+    detail: {
+      fontSize: FontSize(14),
+      color: Colors.blackColorNetural,
+      fontFamily: fonts.Satoshi.Medium,
+      marginBottom: 4,
+    },
 })
 export default styles;

@@ -4,6 +4,8 @@ import React from 'react';
 import AuthStack from './auth_stack';
 import UserStack from './user_stack';
 import EmployeeStack from './employee_stack';
+import AdminStack from './admin_stack';
+import BottomTab from './admin_bottom_tab';
 
 const AppStack = () => {
     const stack = createNativeStackNavigator();
@@ -18,15 +20,8 @@ const AppStack = () => {
                     <stack.Screen name="AuthStack" component={AuthStack} />
                     <stack.Screen name="UserStack" component={UserStack} />
                     <stack.Screen name="EmployeeStack" component={EmployeeStack} />
-                    {/* 
-                    
-                    <stack.Screen name="ProfileStack" component={ProfileStack} />
-                    <stack.Screen name="PaymentScreen" component={PaymentScreen} />
-                    <stack.Screen name="SearchScreen" component={SearchScreen} />
-                    <stack.Screen
-                        name="AddTrainingSession"
-                        component={AddTrainingSession}
-                    /> */}
+                     <stack.Screen name="AdminStack" component={AdminStack} />
+                   
                 </stack.Navigator>
             </NavigationContainer>
     );

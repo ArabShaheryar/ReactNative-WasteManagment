@@ -29,15 +29,6 @@ const EmployeeStack = () => {
         component={EmployeeWorkHistory}
       />
        <stack.Screen name="EmployeeEditProfile" component={EmployeeEditProfile} />
-      {/* 
-       
-    
-      
-      
-       
-        <stack.Screen name="UserEditProfile" component={UserEditProfile} />
-        <stack.Screen name="UserSupport" component={UserSupport} />
-         <stack.Screen name="NewComplain" component={NewComplain} /> */}
     </stack.Navigator>
   );
 };
