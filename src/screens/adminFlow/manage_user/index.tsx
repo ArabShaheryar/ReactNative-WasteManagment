@@ -1,14 +1,17 @@
 import React from 'react';
-import {FlatList, Text, TouchableOpacity, View} from 'react-native';
+import {FlatList, Image, Text, TouchableOpacity, View} from 'react-native';
 import styles from './styles';
 import {ArrowBack, CalendarIcon, DeleteUser, SearchIcon} from '../../../Assets';
 import AppBar from '../../../components/AppBar';
 import InputText from '../../../components/InputText';
 import {Colors} from '../../../utils/app_colors';
 import { useNavigation } from '@react-navigation/native';
+import { Images } from '../../../Assets/images';
+import { hp } from '../../../utils/responsive';
 
 const ManageUser = () => {
      const navigation = useNavigation<any>();
+       const size = hp(5);
   const allData = [
     // Completed (5 entries)
     {
@@ -139,13 +142,19 @@ const ManageUser = () => {
 
   const renderItem = ({item}) => (
     <View style={styles.card}>
-      <View style={styles.rowContainer}>
-        <Text style={styles.title}>{item.title}</Text>
+        <View style={styles.profilePhoto}>
         <View>
-          <DeleteUser />
+          <Image
+            style={{width: size, height: size, borderRadius: size / 2}}
+            source={Images.UserProfileImage}
+          />
+         
         </View>
       </View>
-      <Text style={[styles.detail, {color: Colors.DarkGrey}]}>
+
+      <View style={styles.rowContainer}>
+        <Text style={styles.title}>{item.title}</Text>
+          <Text style={[styles.detail, {color: Colors.DarkGrey}]}>
         Phone: <Text style={styles.detail}>{item.phone}</Text>
       </Text>
       <Text style={[styles.detail, {color: Colors.DarkGrey}]}>
@@ -157,6 +166,11 @@ const ManageUser = () => {
       <Text style={[styles.detail, {color: Colors.DarkGrey}]}>
         Unit #: <Text style={styles.detail}>{item.unit_number}</Text>
       </Text>
+        
+      </View>
+    <View>
+          <DeleteUser />
+        </View>
     </View>
   );
 

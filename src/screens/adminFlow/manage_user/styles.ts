@@ -14,6 +14,8 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 16,
     marginBottom: 12,
+    flexDirection:'row',
+    justifyContent:'space-between',
     shadowColor: '#000',
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.1,
@@ -21,8 +23,8 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   rowContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    // flexDirection: 'row',
+    // justifyContent: 'space-between',
   },
   title: {
     fontSize: FontSize(16),

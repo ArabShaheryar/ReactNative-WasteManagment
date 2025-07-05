@@ -15,6 +15,7 @@ import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {hp, wp} from '../../../utils/responsive';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 const AdminHome = () => {
   const navigation = useNavigation<any>();
@@ -106,12 +107,12 @@ const AdminHome = () => {
   );
 
   return (
-    <View style={styles.body}>
+    <KeyboardAwareScrollView style={styles.body}>
       <View style={styles.appBar}>
         <View style={styles.appBarRow}>
           <TouchableOpacity
-            // onPress={() => navigation.navigate('EmployeeProfile')}
-            >
+          // onPress={() => navigation.navigate('EmployeeProfile')}
+          >
             <Image source={Images.DummyUserImage} style={styles.userImage} />
           </TouchableOpacity>
           {/* <TouchableOpacity
@@ -121,16 +122,17 @@ const AdminHome = () => {
             <Notification />
           </TouchableOpacity> */}
         </View>
-        <Text style={styles.CountText}>
-          59 
-        </Text>
+        <Text style={styles.CountText}>59</Text>
         <Text style={styles.CountTextAll}>/92</Text>
-        <Text style={styles.totalCompletedTaskText}>Total Requests Completed Today</Text>
-       <TouchableOpacity onPress={() => {
-              navigation.navigate('ManageEmployeeTasks');
-            }}>
-         <Text style={styles.manageRequestText}>{'Manage Requests >'}</Text>
-       </TouchableOpacity>
+        <Text style={styles.totalCompletedTaskText}>
+          Total Requests Completed Today
+        </Text>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('ManageEmployeeTasks');
+          }}>
+          <Text style={styles.manageRequestText}>{'Manage Requests >'}</Text>
+        </TouchableOpacity>
       </View>
       <View style={{paddingHorizontal: wp(4), marginTop: hp(3)}}>
         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
@@ -242,6 +244,56 @@ const AdminHome = () => {
             alignItems: 'center',
             marginTop: hp(2),
           }}>
+          <Text style={styles.todayJobsText}>Properties</Text>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Properties')}
+            style={styles.viewAllBox}>
+            <Text style={styles.seeAllText}>Manage</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View
+            style={[
+              styles.propertiesBox,
+              {height: hp(10), paddingVertical: hp(0)},
+            ]}>
+            <Text style={[styles.workStatusText, {marginTop: hp(2)}]}>
+              Total Properties
+            </Text>
+            <Text
+              style={[
+                styles.workStatusText,
+                {marginTop: hp(2), color: Colors.blackColorNetural},
+              ]}>
+              20
+            </Text>
+          </View>
+          <View
+            style={[
+              styles.propertiesBox,
+              {height: hp(10), paddingVertical: hp(0)},
+            ]}>
+            <Text style={[styles.workStatusText, {marginTop: hp(2)}]}>
+              Active Properties
+            </Text>
+            <Text
+              style={[
+                styles.workStatusText,
+                {marginTop: hp(2), color: Colors.blackColorNetural},
+              ]}>
+              5
+            </Text>
+          </View>
+        </View>
+
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginTop: hp(2),
+          }}>
           <Text style={styles.todayJobsText}>Activity Log</Text>
           {/* <TouchableOpacity
             onPress={() => navigation.navigate('TodayTask')}
@@ -257,7 +309,7 @@ const AdminHome = () => {
           contentContainerStyle={styles.card}
         />
       </View>
-    </View>
+    </KeyboardAwareScrollView>
   );
 };
 

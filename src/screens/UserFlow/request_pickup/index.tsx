@@ -14,12 +14,15 @@ import InputText from '../../../components/InputText';
 import CustomButton from '../../../components/CustomButton';
 import {hp} from '../../../utils/responsive';
 import CalendarModal from '../../../components/CustomCalendar';
-import { useIsFocused } from '@react-navigation/native';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
+import {Colors} from '../../../utils/app_colors';
 
 const RequestPicupScreen = () => {
   const [timeSlotModel, settimeSlotModel] = useState(false);
-     const [CalendarModel, setCalendarModel] = useState(false);
-      const isFocued = useIsFocused();
+  const [CalendarModel, setCalendarModel] = useState(false);
+  const [roleModel, setRoleModel] = useState(false);
+    const navigation = useNavigation<any>();
+  const isFocued = useIsFocused();
   const allData = [
     // Completed (5 entries)
     {
@@ -44,29 +47,36 @@ const RequestPicupScreen = () => {
     },
   ];
 
-
   return (
     <View style={styles.body}>
       <AppBar text="Request Pickup" leftIcon={<ArrowBack />} />
       <Text style={styles.dateTimeText}>Date & Time</Text>
-      <InputText placeholder="Select Date" addRight={<CalendarIcon />} onRightPress={()=> setCalendarModel(true)}/>
-      <InputText placeholder="Select Time Slot" addRight={<ArrowDropDown />} onRightPress={()=> settimeSlotModel(true)}/>
+      <InputText
+        placeholder="Select Date"
+        addRight={<CalendarIcon />}
+        onRightPress={() => setCalendarModel(true)}
+      />
+      <InputText
+        placeholder="Select Time Slot"
+        addRight={<ArrowDropDown />}
+        onRightPress={() => settimeSlotModel(true)}
+      />
       <Text style={styles.dateTimeText}>Special instructions</Text>
       <InputText placeholder="e.g; Keep gate open, ring the bell etc." />
 
       <CustomButton
         text="Request Pickup"
         onPress={() => {
+          setRoleModel(true)
           // navigation.navigate('Signin')
         }}
         extraStyle={{marginTop: hp(40), width: '50%', alignSelf: 'flex-end'}}
       />
-  <CalendarModal
-          visible={CalendarModel}
-          onClose={() => setCalendarModel(false)}
-          onDateSelect={()=>{}}
-     
-        />
+      <CalendarModal
+        visible={CalendarModel}
+        onClose={() => setCalendarModel(false)}
+        onDateSelect={() => {}}
+      />
       <Modal
         transparent={true}
         visible={timeSlotModel}
@@ -95,6 +105,35 @@ const RequestPicupScreen = () => {
             </TouchableWithoutFeedback>
           </View>
         </TouchableWithoutFeedback>
+      </Modal>
+
+      <Modal
+        transparent={true}
+        visible={roleModel}
+        animationType="fade"
+        onRequestClose={() => setRoleModel(false)}>
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.logInAs}>
+              Your pickup request has been received!
+            </Text>
+            <Text style={[styles.detail, {color: Colors.DarkGrey}]}>
+              Arrival Time: <Text style={styles.detail}>10-04-2025 12:45</Text>
+            </Text>
+
+            <Text style={styles.contentText}>
+              Our team will arrive as per your selected time. You can track the status of your pickup on home Screen.
+            </Text>
+            <CustomButton
+              text="Back to Home Screen"
+              onPress={() => {
+                setRoleModel(false);
+                navigation.navigate('UserHomeScreen',);
+              }}
+              extraStyle={{marginTop: hp(2.5)}}
+            />
+          </View>
+        </View>
       </Modal>
     </View>
   );

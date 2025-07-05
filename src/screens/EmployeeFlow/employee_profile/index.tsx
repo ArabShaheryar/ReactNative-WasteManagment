@@ -10,6 +10,7 @@ import {
   InfoCircle,
   Lock,
   Notification,
+  NotificationsIconProfile,
   NotificationSmal,
   PersonIcon,
   SettingIcon,
@@ -22,6 +23,7 @@ import {hp, wp} from '../../../utils/responsive';
 import {Images} from '../../../Assets/images';
 import {Colors} from '../../../utils/app_colors';
 import {useNavigation} from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const EmployeeProfile = () => {
   const navigation = useNavigation<any>();
@@ -66,14 +68,14 @@ const EmployeeProfile = () => {
       <Text style={styles.headinText}>General</Text>
       <View style={styles.generView}>
         {/* General Setting */}
-        <View style={styles.rowStyle}>
+        {/* <View style={styles.rowStyle}>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <SettingIcon />
             <Text style={styles.itemText}>General Setting</Text>
           </View>
           <ArrowForward />
         </View>
-        <View style={styles.divider}></View>
+        <View style={styles.divider}></View> */}
 
         {/* My Profile  */}
         <TouchableOpacity
@@ -89,17 +91,15 @@ const EmployeeProfile = () => {
         <View style={styles.divider}></View>
 
         {/* Notifications  */}
-        <TouchableOpacity
-          onPress={() => navigation.navigate('Notifications')}
-          style={styles.rowStyle}>
-          <View style={{flexDirection: 'row'}}>
-            <NotificationSmal />
-            <Text style={styles.itemText}>Notifications</Text>
+         {/* <View style={styles.rowStyle}>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <NotificationsIconProfile />
+            <Text style={styles.itemText}>Notification Settings</Text>
           </View>
           <ArrowForward />
-        </TouchableOpacity>
+        </View>
 
-        <View style={styles.divider}></View>
+        <View style={styles.divider}></View> */}
 
         {/* Work History  */}
         <TouchableOpacity
@@ -148,12 +148,18 @@ const EmployeeProfile = () => {
           <ArrowForward />
         </View>
 
-        <View>
+        <TouchableOpacity  onPress={async () => {
+            await AsyncStorage.setItem('UserRole', '');
+
+            setTimeout(() => {
+              navigation.replace('AuthStack');
+            }, 300);
+          }}>
           <Text
             style={[styles.itemText, {alignSelf: 'center', marginTop: hp(2)}]}>
             Logout
           </Text>
-        </View>
+        </TouchableOpacity>
       </View>
     </KeyboardAwareScrollView>
   );

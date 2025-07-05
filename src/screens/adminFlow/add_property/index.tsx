@@ -2,7 +2,7 @@
 import React from 'react'
 import { View, Text } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import { ArrowBack, ArrowDropDown } from '../../../Assets'
+import { ArrowBack, ArrowDropDown, GenerateIcon } from '../../../Assets'
 import AppBar from '../../../components/AppBar'
 import CustomButton from '../../../components/CustomButton'
 import InputText from '../../../components/InputText'
@@ -21,7 +21,7 @@ const AddProperty = () => {
     <InputText placeholder="Email Address" />
      <InputText placeholder="Phone Number" />
     <Text style={styles.dateTimeText}>Access Code</Text>
-    <InputText placeholder="PRT343" addRight={<ArrowDropDown />} />
+    <InputText placeholder="PRT343" addRight={<GenerateIcon />} />
 
     
 

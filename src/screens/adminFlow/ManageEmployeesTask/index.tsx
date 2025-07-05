@@ -170,7 +170,7 @@ const ManageEmployeeTasks = () => {
   };
 
   const renderItem = ({item}) => (
-    <View style={styles.card}>
+    <TouchableOpacity onPress={()=> navigation.navigate('TaskDetailAdmin')} style={styles.card}>
       <View style={styles.rowContainer}>
         <Text style={styles.title}>{item.title}</Text>
         <View
@@ -192,7 +192,7 @@ const ManageEmployeeTasks = () => {
       <Text style={[styles.detail, {color: Colors.DarkGrey}]}>
         Pickup Point: <Text style={styles.detail}>{item.pickupPoint}</Text>
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 
   return (

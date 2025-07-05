@@ -1,8 +1,16 @@
 import React, {useState} from 'react';
-import {FlatList, Image, Text, TouchableOpacity, View} from 'react-native';
+import {
+  FlatList,
+  Image,
+  Modal,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import styles from './styles';
 import {Images} from '../../../Assets/images';
 import {
+  ArrowDropDown,
   CompletedTask,
   MissedTask,
   Notification,
@@ -12,10 +20,14 @@ import {useNavigation} from '@react-navigation/native';
 import CustomButton from '../../../components/CustomButton';
 import {Colors} from '../../../utils/app_colors';
 import {height, hp} from '../../../utils/responsive';
+import InputText from '../../../components/InputText';
 
 const EmployeeHome = () => {
   const navigation = useNavigation<any>();
   const [checkIn, setCheckIn] = useState(false);
+  const [roleModel, setRoleModel] = useState(false);
+  const [properyModel, setPropertyModel] = useState(false);
+
   const allData = [
     {
       id: '1',
@@ -54,8 +66,34 @@ const EmployeeHome = () => {
     },
   ];
 
+  const propertiesList = [
+    // Completed (5 entries)
+    {
+      id: '1',
+      title: 'Property 1',
+    },
+    {
+      id: '2',
+      title: 'Property 2',
+    },
+    {
+      id: '3',
+      title: 'Property 3',
+    },
+    {
+      id: '4',
+      title: 'Property 4',
+    },
+    {
+      id: '5',
+      title: 'Property 5',
+    },
+  ];
+
   const renderItem = ({item}) => (
-    <TouchableOpacity  onPress={()=> navigation.navigate('EmployeeTaskDetail')} style={styles.card}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate('EmployeeTaskDetail',{screenName: 'today'})}
+      style={styles.card}>
       <Text style={styles.title}>{item.title}</Text>
       <Text style={[styles.detail, {color: Colors.DarkGrey}]}>
         Pickup Point: <Text style={styles.detail}>{item.pickupPoint}</Text>
@@ -80,11 +118,11 @@ const EmployeeHome = () => {
           }}
           extraStyle={{
             width: '40%',
-             height: hp(5),
+            height: hp(5),
             alignSelf: 'flex-end',
             backgroundColor: Colors.lightGrey,
             borderColor: Colors.PrimaryColor,
-            borderWidth:1,
+            borderWidth: 1,
           }}
         />
       </View>
@@ -94,9 +132,12 @@ const EmployeeHome = () => {
   return (
     <View style={styles.body}>
       <View style={styles.appBarRow}>
-       <TouchableOpacity onPress={()=> navigation.navigate('EmployeeTaskDetail',{screenName: 'today'})}>
-         <Image source={Images.DummyUserImage} style={styles.userImage} />
-       </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate('EmployeeProfile',)
+          }>
+          <Image source={Images.DummyUserImage} style={styles.userImage} />
+        </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
             navigation.navigate('Notifications');
@@ -112,7 +153,10 @@ const EmployeeHome = () => {
       <CustomButton
         text={!checkIn ? 'Check In' : 'Check Out'}
         onPress={() => {
-          setCheckIn(!checkIn);
+          if (!checkIn) {
+            setRoleModel(true);
+          }
+          
         }}
         TextStyle={{
           color: !checkIn ? Colors.PrimaryColor : Colors.Whitecolor,
@@ -183,6 +227,54 @@ const EmployeeHome = () => {
         keyExtractor={item => item.id}
         contentContainerStyle={styles.listContent}
       />
+
+      <Modal
+        transparent={true}
+        visible={roleModel}
+        animationType="fade"
+        onRequestClose={() => setRoleModel(false)}>
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.logInAs}>Login Successfully!</Text>
+            <Text style={styles.contentText}>
+              Please Select a property to start working.
+            </Text>
+            <InputText
+              placeholder="Select Property"
+              addRight={<ArrowDropDown />}
+              onRightPress={() => setPropertyModel(true)}
+            />
+            {properyModel ? (
+              <FlatList
+                data={propertiesList}
+                keyExtractor={item => item.id}
+                renderItem={({item}) => (
+                  <View>
+                    <TouchableOpacity
+                      onPress={() => setPropertyModel(false)}
+                      style={styles.propertyItem}>
+                      <Text style={styles.propertyText}>{item.title}</Text>
+                    </TouchableOpacity>
+                    <View style={styles.divider} />
+                  </View>
+                )}
+              />
+            ) : (
+              <View></View>
+            )}
+
+            <CustomButton
+              text="Continue"
+              onPress={() => {
+                 setRoleModel(false)
+                 setCheckIn(!checkIn);
+                // handleContinueButton();
+              }}
+              extraStyle={{marginTop: hp(2.5)}}
+            />
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };

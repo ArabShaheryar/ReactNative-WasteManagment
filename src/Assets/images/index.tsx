@@ -6,4 +6,5 @@ export const Images = {
      RequestPickUp: require('./request_pickup.png'),
       ViewHistory: require('./view_history.png'),
             UserProfileImage: require('./UserProfileImage.png'),
+               SupportIcon: require('./SupportIconHome.png'),
   };

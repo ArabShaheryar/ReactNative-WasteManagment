@@ -8,6 +8,8 @@ import Properties from '../screens/adminFlow/properties';
 import ManageUser from '../screens/adminFlow/manage_user';
 import BottomTab from './admin_bottom_tab';
 import EmployeeAttendance from '../screens/adminFlow/employee_attendance';
+import TaskDetailAdmin from '../screens/adminFlow/task_details_admin';
+import EmployeeDetailsAdmin from '../screens/adminFlow/employee_detail_admin';
 
 const stack = createNativeStackNavigator();
 
@@ -27,13 +29,14 @@ const AdminStack = () => {
       <stack.Screen name="AddNewEmployee" component={AddNewEmployee} />
       <stack.Screen name="AddProperty" component={AddProperty} />
       <stack.Screen name="Properties" component={Properties} />
-      <stack.Screen
-        name="ManageUser"
-        component={ManageUser}
-      />
+      <stack.Screen name="ManageUser" component={ManageUser} />
       <stack.Screen name="EmployeeAttendance" component={EmployeeAttendance} />
-            <stack.Screen name="AdminRequestPickUp" component={AdminRequestPickUp} />
-                   {/* <stack.Screen name="AdminRequestPickUp" component={AdminRequestPickUp} /> */}
+      <stack.Screen name="AdminRequestPickUp" component={AdminRequestPickUp} />
+      <stack.Screen name="TaskDetailAdmin" component={TaskDetailAdmin} />
+      <stack.Screen
+        name="EmployeeDetailsAdmin"
+        component={EmployeeDetailsAdmin}
+      />
     </stack.Navigator>
   );
 };

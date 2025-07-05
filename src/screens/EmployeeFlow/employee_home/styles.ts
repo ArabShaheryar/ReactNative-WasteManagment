@@ -81,8 +81,8 @@ const styles = StyleSheet.create({
     marginTop: hp(3),
   },
   viewAllBox: {
-    height:hp(4),
-    alignItems:'center',
+    height: hp(4),
+    alignItems: 'center',
     paddingVertical: hp(0.5),
     paddingHorizontal: wp(2),
     borderRadius: 6,
@@ -93,6 +93,46 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     fontFamily: fonts.Satoshi.Regular,
     color: Colors.DarkGrey,
+  },
+  modalContainer: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    paddingHorizontal: wp(4),
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  modalContent: {
+    // height: '29%',
+    width: '100%',
+    backgroundColor: Colors.Whitecolor,
+    borderRadius: 8,
+    paddingVertical: hp(2),
+    paddingHorizontal: wp(4),
+  },
+  logInAs: {
+    fontSize: FontSize(18),
+    fontFamily: fonts.Satoshi.Bold,
+    color: Colors.blackColorNetural,
+    marginVertical: hp(1),
+  },
+  contentText: {
+    fontSize: FontSize(14),
+    fontFamily: fonts.Satoshi.Medium,
+    color: Colors.blackColorNetural,
+    marginVertical: hp(1),
+  },
+  propertyText: {
+    fontSize: FontSize(14),
+    fontFamily: fonts.Satoshi.Bold,
+    color: Colors.blackColorNetural,
+  },
+  divider: {
+    height: 1,
+    width: '100%',
+    backgroundColor: '#ccc',
+  },
+  propertyItem: {
+    paddingVertical: hp(1),
   },
 });
 export default styles;

@@ -1,17 +1,16 @@
-
-
-import React from 'react'
-import { FlatList, Text, View } from 'react-native'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import styles from './style'
-import AppBar from '../../../components/AppBar'
-import { ArrowBack } from '../../../Assets'
-import { Colors } from '../../../utils/app_colors'
-import { hp } from '../../../utils/responsive'
+import React from 'react';
+import {FlatList, Text, TouchableOpacity, View} from 'react-native';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import styles from './style';
+import AppBar from '../../../components/AppBar';
+import {AddButton, ArrowBack, IconsIcons} from '../../../Assets';
+import {Colors} from '../../../utils/app_colors';
+import {hp} from '../../../utils/responsive';
+import {useNavigation} from '@react-navigation/native';
 
 const Properties = () => {
-
-        const allData = [
+  const navigation = useNavigation<any>();
+  const allData = [
     // Completed (5 entries)
     {
       id: '1',
@@ -55,38 +54,44 @@ const Properties = () => {
     },
 
     // Missed (5 entries)
-    
   ];
 
- const renderItem = ({item}) => (
+  const renderItem = ({item}) => (
     <View style={styles.card}>
-      <Text style={styles.title}>{item.title}</Text>
-      <Text style={[styles.detail, {color: Colors.DarkGrey}]}>
-        Units: <Text style={styles.detail}>120</Text>
-      </Text>
-      <Text style={[styles.detail, {color: Colors.DarkGrey}]}>
-       Manager: <Text style={styles.detail}>Ali Khan</Text>
-      </Text>
-      <Text style={[styles.detail, {color: Colors.DarkGrey}]}>
-      Contact: <Text style={styles.detail}>03437289479</Text>
-      </Text>
-      
-      
+      <View >
+        <View>
+          <Text style={styles.title}>{item.title}</Text>
+          <Text style={[styles.detail, {color: Colors.DarkGrey}]}>
+            Units: <Text style={styles.detail}>120</Text>
+          </Text>
+          <Text style={[styles.detail, {color: Colors.DarkGrey}]}>
+            Manager: <Text style={styles.detail}>Ali Khan</Text>
+          </Text>
+          <Text style={[styles.detail, {color: Colors.DarkGrey}]}>
+            Contact: <Text style={styles.detail}>03437289479</Text>
+          </Text>
+        </View>
+      </View>
+      <IconsIcons />
     </View>
   );
 
-   return(
-      <KeyboardAwareScrollView style={styles.body}>
-    <AppBar text="Properties" leftIcon={<ArrowBack />} />
-          <FlatList
+  return (
+    <KeyboardAwareScrollView style={styles.body}>
+      <AppBar text="Properties" leftIcon={<ArrowBack />} />
+      <FlatList
         data={allData}
         renderItem={renderItem}
         keyExtractor={item => item.id}
-        contentContainerStyle={{marginTop:hp(2)}}
+        contentContainerStyle={{marginTop: hp(2)}}
       />
-   
-  </KeyboardAwareScrollView>
-   )
-}
+      <TouchableOpacity
+        style={styles.fab}
+        onPress={() => navigation.navigate('AddProperty')}>
+        <AddButton />
+      </TouchableOpacity>
+    </KeyboardAwareScrollView>
+  );
+};
 
-export default Properties
+export default Properties;

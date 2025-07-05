@@ -119,5 +119,16 @@ const styles = StyleSheet.create({
     textDecorationLine:'underline',
     marginTop:hp(0.5)
   },
+
+    propertiesBox: {
+    width: wp(45),
+    height: hp(16),
+    backgroundColor: Colors.lightGrey,
+    // alignItems:'center',
+    // justifyContent:'center',
+    borderRadius: 10,
+    paddingVertical: hp(1.5),
+    paddingHorizontal: wp(3),
+  },
 });
 export default styles;

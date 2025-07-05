@@ -1,15 +1,24 @@
 import React, {useState} from 'react';
-import {FlatList, Text, TouchableOpacity, View} from 'react-native';
+import {FlatList, Image, Text, TouchableOpacity, View} from 'react-native';
 import styles from './styles';
-import {AddButton, ArrowBack, DeleteUser, SearchIcon} from '../../../Assets';
+import {
+  AddButton,
+  ArrowBack,
+  DeleteUser,
+  EditSmall,
+  SearchIcon,
+} from '../../../Assets';
 import {Colors} from '../../../utils/app_colors';
 import AppBar from '../../../components/AppBar';
 import InputText from '../../../components/InputText';
 import {useNavigation} from '@react-navigation/native';
+import {hp, wp} from '../../../utils/responsive';
+import {Images} from '../../../Assets/images';
 
 const ManageEmployees = () => {
   const [selectedTab, setSelectedTab] = useState(0);
   const navigation = useNavigation<any>();
+  const size = hp(5);
   const tabs = [
     {
       key: 0,
@@ -34,7 +43,7 @@ const ManageEmployees = () => {
       id: '1',
       title: 'Ahmed Ali',
       phone: '+12 300 1234567',
-      email: 'ahmed@gmial.com',
+      EmployeeID: 'EMP-0231',
       property: 'Maple Residency',
       unit_number: '454',
       status: 'On Duty',
@@ -43,7 +52,7 @@ const ManageEmployees = () => {
       id: '2',
       title: 'Ahmed Ali',
       phone: '+12 300 1234567',
-      email: 'ahmed@gmial.com',
+      EmployeeID: 'EMP-0231',
       property: 'Maple Residency',
       unit_number: '454',
       status: 'On Duty',
@@ -52,7 +61,7 @@ const ManageEmployees = () => {
       id: '3',
       title: 'Ahmed Ali',
       phone: '+12 300 1234567',
-      email: 'ahmed@gmial.com',
+      EmployeeID: 'EMP-0231',
       property: 'Maple Residency',
       unit_number: '454',
       status: 'On Duty',
@@ -61,7 +70,7 @@ const ManageEmployees = () => {
       id: '4',
       title: 'Ahmed Ali',
       phone: '+12 300 1234567',
-      email: 'ahmed@gmial.com',
+      EmployeeID: 'EMP-0231',
       property: 'Maple Residency',
       unit_number: '454',
     },
@@ -69,7 +78,7 @@ const ManageEmployees = () => {
       id: '5',
       title: 'Ahmed Ali',
       phone: '+12 300 1234567',
-      email: 'ahmed@gmial.com',
+      EmployeeID: 'EMP-0231',
       property: 'Maple Residency',
       unit_number: '454',
       status: 'On Duty',
@@ -80,7 +89,7 @@ const ManageEmployees = () => {
       id: '6',
       title: 'Ahmed Ali',
       phone: '+12 300 1234567',
-      email: 'ahmed@gmial.com',
+      EmployeeID: 'EMP-0231',
       property: 'Maple Residency',
       unit_number: '454',
       status: 'Off Duty',
@@ -89,7 +98,7 @@ const ManageEmployees = () => {
       id: '7',
       title: 'Ahmed Ali',
       phone: '+12 300 1234567',
-      email: 'ahmed@gmial.com',
+      EmployeeID: 'EMP-0231',
       property: 'Maple Residency',
       unit_number: '454',
       status: 'Off Duty',
@@ -98,7 +107,7 @@ const ManageEmployees = () => {
       id: '8',
       title: 'Ahmed Ali',
       phone: '+12 300 1234567',
-      email: 'ahmed@gmial.com',
+      EmployeeID: 'EMP-0231',
       property: 'Maple Residency',
       unit_number: '454',
       status: 'Off Duty',
@@ -107,7 +116,7 @@ const ManageEmployees = () => {
       id: '9',
       title: 'Ahmed Ali',
       phone: '+12 300 1234567',
-      email: 'ahmed@gmial.com',
+      EmployeeID: 'EMP-0231',
       property: 'Maple Residency',
       unit_number: '454',
       status: 'Off Duty',
@@ -116,7 +125,7 @@ const ManageEmployees = () => {
       id: '10',
       title: 'Ahmed Ali',
       phone: '+12 300 1234567',
-      email: 'ahmed@gmial.com',
+      EmployeeID: 'EMP-0231',
       property: 'Maple Residency',
       unit_number: '454',
       status: 'Off Duty',
@@ -127,7 +136,7 @@ const ManageEmployees = () => {
       id: '11',
       title: 'Ahmed Ali',
       phone: '+12 300 1234567',
-      email: 'ahmed@gmial.com',
+      EmployeeID: 'EMP-0231',
       property: 'Maple Residency',
       unit_number: '454',
       status: 'Late',
@@ -136,7 +145,7 @@ const ManageEmployees = () => {
       id: '12',
       title: 'Ahmed Ali',
       phone: '+12 300 1234567',
-      email: 'ahmed@gmial.com',
+      EmployeeID: 'EMP-0231',
       property: 'Maple Residency',
       unit_number: '454',
       status: 'Late',
@@ -145,7 +154,7 @@ const ManageEmployees = () => {
       id: '13',
       title: 'Ahmed Ali',
       phone: '+12 300 1234567',
-      email: 'ahmed@gmial.com',
+      EmployeeID: 'EMP-0231',
       property: 'Maple Residency',
       unit_number: '454',
     },
@@ -153,7 +162,7 @@ const ManageEmployees = () => {
       id: '14',
       title: 'Ahmed Ali',
       phone: '+12 300 1234567',
-      email: 'ahmed@gmial.com',
+      EmployeeID: 'EMP-0231',
       property: 'Maple Residency',
       unit_number: '454',
       status: 'Late',
@@ -162,7 +171,7 @@ const ManageEmployees = () => {
       id: '15',
       title: 'Ahmed Ali',
       phone: '+12 300 1234567',
-      email: 'ahmed@gmial.com',
+      EmployeeID: 'EMP-0231',
       property: 'Maple Residency',
       unit_number: '454',
       status: 'Late',
@@ -183,32 +192,60 @@ const ManageEmployees = () => {
   };
 
   const renderItem = ({item}) => (
-    <View style={styles.card}>
-      <View style={styles.rowContainer}>
-        <Text style={styles.title}>{item.title}</Text>
-        <View
-          style={[
-            styles.statusBadge,
-            item.status === 'On Duty' && {backgroundColor: 'green'},
-            item.status === 'Late' && {backgroundColor: 'red'},
-            item.status === 'Off Duty' && {backgroundColor: 'orange'},
-          ]}>
-          <Text style={styles.statusText}>{item?.status?.toUpperCase()}</Text>
+    <TouchableOpacity onPress={()=> navigation.navigate('EmployeeDetailsAdmin')} style={styles.card}>
+      <View style={styles.profilePhoto}>
+        <View>
+          <Image
+            style={{width: size, height: size, borderRadius: size / 2}}
+            source={Images.UserProfileImage}
+          />
+          <View
+            style={{
+              position: 'absolute',
+              marginTop: hp(3.4),
+              marginLeft: wp(7),
+            }}>
+            <EditSmall />
+          </View>
         </View>
       </View>
-      <Text style={[styles.detail, {color: Colors.DarkGrey}]}>
-        Phone: <Text style={styles.detail}>{item.phone}</Text>
-      </Text>
-      <Text style={[styles.detail, {color: Colors.DarkGrey}]}>
-        Email: <Text style={styles.detail}>{item.email}</Text>
-      </Text>
-      <Text style={[styles.detail, {color: Colors.DarkGrey}]}>
-        Property: <Text style={styles.detail}>{item.property}</Text>
-      </Text>
-      <Text style={[styles.detail, {color: Colors.DarkGrey}]}>
-        Unit #: <Text style={styles.detail}>{item.unit_number}</Text>
-      </Text>
-    </View>
+      <View style={styles.rowContainer}>
+        <Text style={styles.title}>{item.title}</Text>
+        <Text style={[styles.detail, {color: Colors.DarkGrey}]}>
+          Employee ID: <Text style={styles.detail}>{item.EmployeeID}</Text>
+        </Text>
+        <Text style={[styles.detail, {color: Colors.DarkGrey}]}>
+          Phone: <Text style={styles.detail}>{item.phone}</Text>
+        </Text>
+
+        <Text style={[styles.detail, {color: Colors.DarkGrey}]}>
+          Assigned Area: <Text style={styles.detail}>{item.property}</Text>
+        </Text>
+      </View>
+      <View
+        style={[
+          styles.statusBadge,
+          item.status === 'On Duty' && {
+            backgroundColor: 'rgba(76, 175, 80, 0.15)',
+          },
+          item.status === 'Late' && {
+            backgroundColor: 'rgba(220, 53, 69, 0.15)',
+          },
+          item.status === 'Off Duty' && {
+            backgroundColor: 'rgba(253, 126, 20, 0.15)',
+          },
+        ]}>
+        <Text
+          style={[
+            styles.statusText,
+            item.status === 'On Duty' && {color: 'rgba(76, 175, 80, 1)'},
+            item.status === 'Late' && {color: 'rgba(220, 53, 69, 1)'},
+            item.status === 'Off Duty' && {color: 'rgba(253, 126, 20, 1)'},
+          ]}>
+          {item?.status?.toUpperCase()}
+        </Text>
+      </View>
+    </TouchableOpacity>
   );
 
   return (
@@ -242,7 +279,7 @@ const ManageEmployees = () => {
         keyExtractor={item => item.id}
         contentContainerStyle={styles.listContent}
       />
-      <TouchableOpacity
+      {/* <TouchableOpacity
         style={styles.fab}
         onPress={() =>
           navigation.navigate('Manage Employees')
@@ -251,15 +288,12 @@ const ManageEmployees = () => {
         style={styles.fab}
         onPress={() =>
           navigation.navigate('AddNewEmployee')
-        }></TouchableOpacity>
+        }></TouchableOpacity> */}
       <TouchableOpacity
         style={styles.fab}
-        onPress={() =>
-          navigation.navigate('AddNewEmployee')
-        }>
-          <AddButton />
-        </TouchableOpacity>
-        
+        onPress={() => navigation.navigate('AddNewEmployee')}>
+        <AddButton />
+      </TouchableOpacity>
     </View>
   );
 };

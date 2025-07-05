@@ -7,22 +7,27 @@ const styles = StyleSheet.create({
   body: {
     flex: 1,
     backgroundColor: Colors.Whitecolor,
-    paddingHorizontal: wp(4),
+    paddingHorizontal: wp(3),
   },
   card: {
     backgroundColor: Colors.lightGrey,
     borderRadius: 8,
-    padding: 16,
+    // padding: 16,
+    flexDirection:'row',
+    justifyContent:'space-between',
     marginBottom: 12,
     shadowColor: '#000',
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 2,
+    paddingVertical: hp(1),
+    paddingHorizontal:hp(1)
   },
   rowContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    marginLeft:hp(1)
+    // flexDirection: 'row',
+    // justifyContent: 'space-between',
   },
   title: {
     fontSize: FontSize(16),
@@ -38,33 +43,33 @@ const styles = StyleSheet.create({
   listContent: {
     padding: 16,
   },
-   tabContainer: {
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      paddingVertical: hp(1),
-      backgroundColor: 'white',
-      marginTop: hp(1.5),
-    },
-    tab: {
-      paddingHorizontal: wp(2.2),
-      paddingVertical: hp(0.5),
-      backgroundColor: Colors.lightGrey,
-      borderRadius: hp(0.5),
-    },
-    selectedTab: {
-      backgroundColor: Colors.PrimaryColor,
-      borderRadius: hp(0.5),
-    },
-    tabText: {
-      fontSize: FontSize(12),
-      fontFamily: fonts.Satoshi.Medium,
-      color: Colors.lightGreyI,
-    },
-    selectedTabText: {
-      fontSize: FontSize(12),
-      fontFamily: fonts.Satoshi.Medium,
-      color: Colors.Whitecolor,
-    },
+  tabContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingVertical: hp(1),
+    backgroundColor: 'white',
+    marginTop: hp(1.5),
+  },
+  tab: {
+    paddingHorizontal: wp(2.2),
+    paddingVertical: hp(0.5),
+    backgroundColor: Colors.lightGrey,
+    borderRadius: hp(0.5),
+  },
+  selectedTab: {
+    backgroundColor: Colors.PrimaryColor,
+    borderRadius: hp(0.5),
+  },
+  tabText: {
+    fontSize: FontSize(12),
+    fontFamily: fonts.Satoshi.Medium,
+    color: Colors.lightGreyI,
+  },
+  selectedTabText: {
+    fontSize: FontSize(12),
+    fontFamily: fonts.Satoshi.Medium,
+    color: Colors.Whitecolor,
+  },
   statusBadge: {
     alignSelf: 'flex-start',
     paddingHorizontal: 8,
@@ -75,18 +80,17 @@ const styles = StyleSheet.create({
   statusText: {
     color: 'white',
     fontSize: FontSize(10),
-   fontFamily:fonts.Satoshi.Medium
+    fontFamily: fonts.Satoshi.Medium,
   },
-   fab: {
+  fab: {
     position: 'absolute',
     right: 40,
     bottom: 40,
-   },
-   fab: {
+  },
+  fab: {
     position: 'absolute',
     right: 20,
     bottom: 20,
-    backgroundColor: '#007AFF',
     borderRadius: 30,
     width: 60,
     height: 60,
@@ -95,8 +99,21 @@ const styles = StyleSheet.create({
     elevation: 5,
     shadowColor: '#000',
     shadowOpacity: 0.3,
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowRadius: 4,
+  },
+   profilePhoto: {
+    height: hp(10),
+    width: 'auto',
+    borderRadius: 10,
+    // alignSelf: 'center',
+    // alignItems: 'center',
+    // backgroundColor: Colors.DarkGrey,
+    // marginTop: hp(5),
+   
+    // paddingVertical: 12,
+    // flexDirection: 'row',
+    
   },
 });
 export default styles;

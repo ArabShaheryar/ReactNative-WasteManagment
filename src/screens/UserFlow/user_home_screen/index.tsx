@@ -96,7 +96,7 @@ const UserHomeScreen = () => {
         {/* Feedback Box */}
         <TouchableOpacity onPress={() => navigation.navigate('UserSupport')}>
           <View style={styles.quickActionBox}>
-            <Image style={styles.actionsImages} source={Images.FeedbackImage} />
+            <Image style={styles.actionsImages} source={Images.SupportIcon} />
           </View>
           <Text style={styles.quickActionsText}>Support</Text>
         </TouchableOpacity>

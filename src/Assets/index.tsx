@@ -58,3 +58,7 @@ export { default as DownloadReport } from './svgs/DownloadReport.svg';
 export { default as ArrowForwardBG } from './svgs/ArrowForwardBG.svg';
 export { default as ArrowBackBG } from './svgs/ArrowPrevDisable.svg';
 export { default as AddButton } from './svgs/AddButton.svg';
+export { default as NotificationsIconProfile } from './svgs/NotificationsIconProfile.svg';
+export { default as GenerateIcon } from './svgs/GenerateIcon.svg';
+export { default as CallIcon } from './svgs/CallIcon.svg';
+export { default as IconsIcons } from './svgs/IconsIcons.svg';

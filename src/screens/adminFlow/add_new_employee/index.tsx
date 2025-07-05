@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import {ArrowBack, ArrowDropDown, CalendarIcon} from '../../../Assets';
+import {ArrowBack, ArrowDropDown, CalendarIcon, GenerateIcon} from '../../../Assets';
 import AppBar from '../../../components/AppBar';
 import CustomButton from '../../../components/CustomButton';
 import InputText from '../../../components/InputText';
@@ -22,10 +22,10 @@ const AddNewEmployee = () => {
     <InputText placeholder="Select Property" addRight={<ArrowDropDown />} />
 
     <Text style={styles.dateTimeText}>Employee iD</Text>
-    <InputText placeholder="EMP-23213" addRight={<ArrowDropDown />} />
+    <InputText placeholder="EMP-23213" addRight={<GenerateIcon />} />
 
     <Text style={styles.dateTimeText}>Password</Text>
-    <InputText placeholder="Hshdu~78`jil" addRight={<ArrowDropDown />} />
+    <InputText placeholder="Hshdu~78`jil" addRight={<GenerateIcon />} />
 
     <CustomButton
       text="Add"

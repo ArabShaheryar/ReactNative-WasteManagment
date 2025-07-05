@@ -9,6 +9,8 @@ import {
   ArrowForward,
   EditIcon,
   InfoCircle,
+  Notification,
+  NotificationsIconProfile,
   PersonIcon,
   SettingIcon,
   StarFeedback,
@@ -16,9 +18,9 @@ import {
   TermsAndConditions,
 } from '../../../Assets';
 import AppBar from '../../../components/AppBar';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 const UserProfile = () => {
   const navigation = useNavigation<any>();
@@ -30,12 +32,19 @@ const UserProfile = () => {
       <View style={styles.profilePhoto}>
         <View>
           <Image
-          style={{width: size, height: size, borderRadius: size / 2}}
-          source={Images.UserProfileImage}
-        />
-          <View style={{position:'absolute', marginTop:hp(10), marginLeft:wp(20)}}><EditIcon /></View>
+            style={{width: size, height: size, borderRadius: size / 2}}
+            source={Images.UserProfileImage}
+          />
+          <View
+            style={{
+              position: 'absolute',
+              marginTop: hp(10),
+              marginLeft: wp(20),
+            }}>
+            <EditIcon />
+          </View>
         </View>
-        
+
         <View style={{marginLeft: 12, marginTop: 10}}>
           <Text style={styles.UserName}>Nouman Imran</Text>
           <Text style={styles.UserEmail}>Tenant</Text>
@@ -45,23 +54,26 @@ const UserProfile = () => {
 
       <View style={styles.generView}>
         {/* General Setting */}
-        {/* <View style={styles.rowStyle}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <SettingIcon />
-            <Text style={styles.itemText}>General Setting</Text>
-          </View>
-          <ArrowForward />
-        </View> */}
-        {/* <View style={styles.divider}></View> */}
-         {/* My Profile */}
-        <TouchableOpacity onPress={()=> navigation.navigate('UserEditProfile')} style={styles.rowStyle}>
+
+        <TouchableOpacity
+          onPress={() => navigation.navigate('UserEditProfile')}
+          style={styles.rowStyle}>
           <View style={{flexDirection: 'row'}}>
             <PersonIcon />
             <Text style={styles.itemText}>My Profile</Text>
           </View>
           <ArrowForward />
         </TouchableOpacity>
-
+        {/* <View style={styles.divider}></View>
+        <View style={styles.rowStyle}>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <NotificationsIconProfile />
+            <Text style={styles.itemText}>Notification Settings</Text>
+          </View>
+          <ArrowForward />
+        </View> */}
+        {/* 
+         {/* My Profile */}
 
         {/* <View style={styles.divider}></View> */}
 
@@ -74,7 +86,6 @@ const UserProfile = () => {
         </View> */}
 
         {/* General Setting */}
-
       </View>
       <Text
         style={[styles.headinText, {marginBottom: hp(2), marginTop: hp(2)}]}>
@@ -91,10 +102,11 @@ const UserProfile = () => {
           <ArrowForward />
         </View>
 
-      
         <View style={styles.divider}></View>
-          {/* Feedback Screen */}
-        <TouchableOpacity onPress={()=> navigation.navigate('FeedbackScreen')} style={styles.rowStyle}>
+        {/* Feedback Screen */}
+        <TouchableOpacity
+          onPress={() => navigation.navigate('FeedbackScreen')}
+          style={styles.rowStyle}>
           <View style={{flexDirection: 'row'}}>
             <StarFeedback />
             <Text style={styles.itemText}>Feedback</Text>
@@ -102,18 +114,18 @@ const UserProfile = () => {
           <ArrowForward />
         </TouchableOpacity>
 
-
-
         <View style={styles.divider}></View>
- {/* Feedback Screen */}
-        <TouchableOpacity onPress={()=> navigation.navigate('UserSupport')} style={styles.rowStyle}>
+        {/* Feedback Screen */}
+        <TouchableOpacity
+          onPress={() => navigation.navigate('UserSupport')}
+          style={styles.rowStyle}>
           <View style={{flexDirection: 'row'}}>
             <SupportIcon />
             <Text style={styles.itemText}>Support</Text>
           </View>
           <ArrowForward />
         </TouchableOpacity>
- <View style={styles.divider}></View>
+        <View style={styles.divider}></View>
         <View style={styles.rowStyle}>
           <View style={{flexDirection: 'row'}}>
             <InfoCircle />
@@ -122,15 +134,18 @@ const UserProfile = () => {
           <ArrowForward />
         </View>
 
-        <TouchableOpacity onPress={async ()=> {
-          await AsyncStorage.setItem('UserRole', '');
-          
-           setTimeout(() => {
-            navigation.replace('AuthStack')
-           }, 300);
-        }}>
-          <Text style={[styles.itemText,{alignSelf:'center', marginTop:hp(2)}]}>Logout</Text>
-         
+        <TouchableOpacity
+          onPress={async () => {
+            await AsyncStorage.setItem('UserRole', '');
+
+            setTimeout(() => {
+              navigation.replace('AuthStack');
+            }, 300);
+          }}>
+          <Text
+            style={[styles.itemText, {alignSelf: 'center', marginTop: hp(2)}]}>
+            Logout
+          </Text>
         </TouchableOpacity>
       </View>
     </KeyboardAwareScrollView>
