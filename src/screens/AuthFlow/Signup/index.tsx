@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import React from 'react';
+import React, {useState} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {
@@ -16,9 +16,36 @@ import styles from './styles';
 import {hp, wp} from '../../../utils/responsive';
 import InputText from '../../../components/InputText';
 import CustomButton from '../../../components/CustomButton';
+import {showErrorToast} from '../../../utils/toast';
 
 const SignUp = () => {
   const navigation = useNavigation<any>();
+  const [userName, setUserName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const handleContinueButton = () => {
+    if (!userName || userName === '') {
+      showErrorToast('Error', 'Please Enter Username');
+      return;
+    } else if (!email || email === '') {
+      showErrorToast('Error', 'Please Enter Email');
+      return;
+    } else if (!password || password === '') {
+      showErrorToast('Error', 'Please Enter Password');
+      return;
+    } else if (!confirmPassword || confirmPassword === '') {
+      showErrorToast('Error', 'Please Enter Confirm Password');
+      return;
+    } else if (password !== confirmPassword) {
+      showErrorToast('Error', 'Password Mismatch');
+      return;
+    } else {
+      navigation.navigate('ProfileSetup');
+    }
+  };
+
   return (
     <KeyboardAwareScrollView
       showsVerticalScrollIndicator={false}
@@ -51,23 +78,27 @@ const SignUp = () => {
                 <Text style={styles.accessCodeTextSpan}> Property Manager</Text>
               </Text>
             </View>
-            <InputText placeholder="User Name" addLeft={<UserIcon />} />
-            <InputText placeholder="Email" addLeft={<Email />} />
+            <InputText value={userName} placeholder="User Name" addLeft={<UserIcon />} onChangeText={(text)=> setUserName(text)} />
+            <InputText value={email} placeholder="Email" addLeft={<Email />} onChangeText={(text)=> setEmail(text)} />
             <InputText
               placeholder="Password"
               addLeft={<Lock />}
               addRight={<EyeHide />}
+              value={password}
+              onChangeText={(text)=> setPassword(text)}
             />
             <InputText
               placeholder="Confirm Password"
               addLeft={<Lock />}
               addRight={<EyeHide />}
+              value={confirmPassword}
+              onChangeText={(text)=> setConfirmPassword(text)}
             />
 
             <CustomButton
               text="Sign Up"
               onPress={() => {
-                navigation.navigate('ProfileSetup');
+                handleContinueButton();
               }}
               extraStyle={{marginTop: hp(8), marginBottom: hp(5)}}
             />

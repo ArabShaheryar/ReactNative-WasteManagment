@@ -8,12 +8,33 @@ import {useNavigation} from '@react-navigation/native';
 import {hp, wp} from '../../../utils/responsive';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Colors} from '../../../utils/app_colors';
+import {showErrorToast} from '../../../utils/toast';
 
 const Signin = (props: any) => {
   const {userType} = props?.route?.params;
   const navigation = useNavigation<any>();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const handleContinueButton = () => {
+    if (!email || email === '') {
+      showErrorToast('Error', 'Please Enter Email');
+      return;
+    } else if (!password || password === '') {
+      showErrorToast('Error', 'Please Enter Password');
+      return;
+    } else {
+      if (userType === 'User') {
+        navigation.replace('UserStack');
+      } else {
+        if (email.trim() === 'Admin@gmail.com') {
+          navigation.replace('AdminStack');
+        } else {
+          navigation.replace('EmployeeStack');
+        }
+      }
+    }
+  };
 
   return (
     <KeyboardAwareScrollView
@@ -75,15 +96,7 @@ const Signin = (props: any) => {
             <CustomButton
               text="Sign In"
               onPress={() => {
-                if (userType === 'User') {
-                  navigation.replace('UserStack');
-                } else {
-                  if (email.trim() === 'Admin@gmail.com') {
-                    navigation.replace('AdminStack');
-                  } else {
-                    navigation.replace('EmployeeStack');
-                  }
-                }
+                handleContinueButton();
               }}
               extraStyle={{marginTop: hp(20)}}
             />

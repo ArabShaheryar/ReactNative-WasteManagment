@@ -15,11 +15,33 @@ import CustomButton from '../../../components/CustomButton';
 import {hp} from '../../../utils/responsive';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import CalendarModal from '../../../components/CustomCalendar';
+import { showErrorToast } from '../../../utils/toast';
 
 const AdminRequestPickUp = () => {
   const [CalendarModel, setCalendarModel] = useState(false);
   const [timeSlotModel, settimeSlotModel] = useState(false);
   const [employeeList, setEmployeeList] = useState(false);
+
+    const [unitNumber, setUnitNumber] = useState('');
+    const [buildingNumber, setBuildingNumber] = useState('');
+    const [specialInst, SetSpecialInst] = useState('');
+
+  
+    const handleContinueButton = () => {
+      if (!unitNumber || unitNumber === '') {
+        showErrorToast('Error', 'Please Enter Unit Number');
+        return;
+      } else if (!buildingNumber || buildingNumber === '') {
+        showErrorToast('Error', 'Please Enter building number');
+        return;
+      } else if (!specialInst || specialInst === '') {
+        showErrorToast('Error', 'Please Enter Special instructions');
+        return;
+      }  else {
+      }
+    };
+
+
   const allData = [
     // Completed (5 entries)
     {
@@ -72,8 +94,8 @@ const AdminRequestPickUp = () => {
     <KeyboardAwareScrollView style={styles.body}>
       <AppBar text="Request Pickup" leftIcon={<ArrowBack />} />
       <Text style={styles.dateTimeText}>Property & Unit</Text>
-      <InputText placeholder="Unit Number" />
-      <InputText placeholder="Building Name" />
+      <InputText placeholder="Unit Number" value={unitNumber}  onChangeText={text => setUnitNumber(text)}/>
+      <InputText placeholder="Building Name"  value={buildingNumber}  onChangeText={text => setBuildingNumber(text)}/>
       <Text style={styles.dateTimeText}>Date & Time</Text>
       <InputText
         placeholder="Select Date"
@@ -88,11 +110,12 @@ const AdminRequestPickUp = () => {
       <Text style={styles.dateTimeText}>Assign To</Text>
       <InputText placeholder="Select Employee" addRight={<ArrowDropDown />} onRightPress={() => setEmployeeList(true)} />
       <Text style={styles.dateTimeText}>Special instructions</Text>
-      <InputText placeholder="e.g; Keep gate open, ring the bell etc." />
+      <InputText placeholder="e.g; Keep gate open, ring the bell etc."  value={specialInst}  onChangeText={text => SetSpecialInst(text)}/>
 
       <CustomButton
         text="Add Task"
         onPress={() => {
+          handleContinueButton()
           // navigation.navigate('Signin')
         }}
         extraStyle={{marginTop: hp(10), width: '50%', alignSelf: 'flex-end'}}

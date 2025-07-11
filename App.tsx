@@ -9,13 +9,14 @@ import React from 'react';
 import AppStack from './src/navigations/app_stack';
 import { SafeAreaView } from 'react-native';
 import { Colors } from './src/utils/app_colors';
+import Toast from 'react-native-toast-message';
 
 const App = () => {
   return (
       
         <SafeAreaView style={{flex: 1, backgroundColor: 'transparent'}}>
           <AppStack />
-          {/* <Toast /> */}
+          <Toast />
         </SafeAreaView>
     // <Provider store={store}>
     //   <PersistGate loading={null} persistor={persistor}>
